@@ -1,9 +1,9 @@
 import { createContext, useContext, useReducer, useEffect } from 'react';
 
-// Create the context
+
 const CartContext = createContext(undefined);
 
-// Define reducer action types
+
 const CART_ACTIONS = {
   ADD_ITEM: 'ADD_ITEM',
   REMOVE_ITEM: 'REMOVE_ITEM',
@@ -11,7 +11,7 @@ const CART_ACTIONS = {
   CLEAR_CART: 'CLEAR_CART'
 };
 
-// Reducer function
+
 function cartReducer(state, action) {
   switch (action.type) {
     case CART_ACTIONS.ADD_ITEM: {
@@ -19,7 +19,7 @@ function cartReducer(state, action) {
       const existingItemIndex = state.cartItems.findIndex(item => item.id === id);
 
       if (existingItemIndex > -1) {
-        // Increment quantity of existing item
+
         const updatedItems = state.cartItems.map((item, idx) => 
           idx === existingItemIndex 
             ? { ...item, quantity: item.quantity + 1 }
@@ -44,7 +44,7 @@ function cartReducer(state, action) {
     case CART_ACTIONS.UPDATE_QUANTITY: {
       const { id, quantity } = action.payload;
       if (quantity <= 0) {
-        // Remove item if quantity is zero or negative
+
         return {
           ...state,
           cartItems: state.cartItems.filter(item => item.id !== id)
@@ -66,7 +66,7 @@ function cartReducer(state, action) {
   }
 }
 
-// Initializer function for useReducer to rehydrate cart from localStorage
+
 const initCartState = () => {
   try {
     const localData = localStorage.getItem('shopzone_cart');
@@ -77,16 +77,16 @@ const initCartState = () => {
   }
 };
 
-// CartProvider Component wrapper
+
 export function CartProvider({ children }) {
   const [state, dispatch] = useReducer(cartReducer, { cartItems: [] }, initCartState);
 
-  // Sync state to localStorage on changes
+
   useEffect(() => {
     localStorage.setItem('shopzone_cart', JSON.stringify(state.cartItems));
   }, [state.cartItems]);
 
-  // Actions
+
   const addToCart = (product) => {
     dispatch({ type: CART_ACTIONS.ADD_ITEM, payload: product });
   };
@@ -103,7 +103,7 @@ export function CartProvider({ children }) {
     dispatch({ type: CART_ACTIONS.CLEAR_CART });
   };
 
-  // Derived values
+
   const totalItems = state.cartItems.reduce((total, item) => total + item.quantity, 0);
   const totalPrice = state.cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
 
@@ -120,7 +120,7 @@ export function CartProvider({ children }) {
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 }
 
-// Custom hook to consume the CartContext
+
 export function useCart() {
   const context = useContext(CartContext);
   if (!context) {

@@ -4,7 +4,7 @@ const AuthContext = createContext(undefined);
 
 export function AuthProvider({ children }) {
   const [isAuthenticated, setIsAuthenticated] = useState(() => {
-    // Rehydrate auth state from sessionStorage on mount
+
     try {
       const persistedAuth = sessionStorage.getItem('shopzone_auth');
       return persistedAuth === 'true';
@@ -21,7 +21,7 @@ export function AuthProvider({ children }) {
     setIsAuthenticated(false);
   };
 
-  // Sync auth state to sessionStorage
+
   useEffect(() => {
     sessionStorage.setItem('shopzone_auth', isAuthenticated ? 'true' : 'false');
   }, [isAuthenticated]);

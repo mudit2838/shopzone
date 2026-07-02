@@ -6,7 +6,7 @@ export default function ProtectedRoute({ children }) {
   const location = useLocation();
 
   if (!isAuthenticated) {
-    // Save the location the user tried to visit so we can redirect back after login
+
     return <Navigate to="/login" state={{ from: location }} replace />;
   }
 

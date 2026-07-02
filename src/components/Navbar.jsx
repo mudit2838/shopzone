@@ -30,7 +30,7 @@ export default function Navbar() {
           <span className="hamburger-bar"></span>
         </button>
 
-        {/* Navigation Links */}
+
         <div className={`navbar-links ${menuOpen ? 'show' : ''}`} id="navbar-menu-links">
           <NavLink to="/" className={({ isActive }) => `navbar-link ${isActive ? 'active' : ''}`} onClick={closeMenu} end>
             Home
