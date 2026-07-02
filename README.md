@@ -5,8 +5,8 @@ ShopZone is a clean, modern, and highly interactive Single Page Application (SPA
 ---
 
 ## 🔗 Project Links
-* **Live Demo:** [https://shopzone.vercel.app](https://shopzone.vercel.app)
-* **GitHub Repository:** [https://github.com/username/shopzone](https://github.com/username/shopzone)
+* **Live Demo:** [https://shopzone-pink.vercel.app]
+* **GitHub Repository:** [https://github.com/mudit2838/shopzone.git]
 
 ---
 
