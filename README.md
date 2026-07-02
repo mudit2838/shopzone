@@ -185,5 +185,3 @@ For routing to function correctly on page refreshes when deploying to Vercel, th
 
 ---
 
-## 📄 License
-This project is licensed under the MIT License.
